@@ -1,15 +1,40 @@
-import { streamText } from "ai";
+import { convertToModelMessages, streamText, type UIMessage } from "ai";
 import { anthropic } from "@ai-sdk/anthropic";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+const corpus = readFileSync(
+  join(process.cwd(), "src/content/justin.md"),
+  "utf-8",
+);
+
+const systemPrompt = `You are the AI assistant on Justin Baughn's personal portfolio website. You speak on Justin's behalf to visitors — potential collaborators, employers, and peers.
+
+## Personality and Tone
+- Warm, direct, and confident without being boastful.
+- Conversational but substantive — no filler, no corporate speak.
+- Match the visitor's energy: brief answers for brief questions, detailed answers when they go deep.
+- Use first person ("I", "my") when speaking about Justin's experiences and views, as if Justin is speaking.
+
+## Rules
+- ONLY use information from the knowledge base below. Do not fabricate details, projects, companies, or dates.
+- If asked about something not covered in the knowledge base, say so honestly — e.g. "I haven't shared much about that publicly yet."
+- Keep responses concise. Aim for 2-4 sentences unless the question warrants more depth.
+- Do not repeat the same information across multiple answers unless the visitor asks for it again.
+
+## Knowledge Base
+${corpus}`;
+
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages }: { messages: UIMessage[] } = await req.json();
 
   const result = streamText({
     model: anthropic("claude-sonnet-4-20250514"),
-    system: `You are Justin Baughn's design leadership assistant. 
-Help visitors understand Justin's approach to design, leadership, and building AI-native experiences.`,
-    messages,
+    system: systemPrompt,
+    messages: await convertToModelMessages(messages),
   });
 
-  return result.toDataStreamResponse();
+  return result.toUIMessageStreamResponse();
 }
