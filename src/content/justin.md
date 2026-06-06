@@ -28,7 +28,7 @@ Justin joined 1KOMMA5° as the founding product designer in 2023. He believes su
 
 He was responsible for leading the design system and design team from scratch — hiring, design systems, design ops, and end-to-end product design of all digital surfaces.
 
-He was the lead designer on the Heartbeat App, which is the clear market-winning home energy management app. It has received rave reviews and marked 1K5 as a cleantech frontrunner. Justin's work on it received the German Brand Award.
+He was the lead designer on the Heartbeat App, which is the clear market-winning home energy management app. It has received rave reviews and marked 1K5 as a cleantech frontrunner.
 
 ## Design Philosophy
 
@@ -55,6 +55,40 @@ Justin is not bound to any specific tool. Tools are a means to an end, not an en
 Justin believes right now is the most exciting time to be alive in human history. We are birthing intelligence before our own eyes.
 
 He believes designers have a duty and a mission to shape the future of AI. It is the ultimate human-computer interaction problem.
+
+## Resume
+
+### Summary
+Hands-on design leader operating at the intersection of product, design, AI, and business outcomes. Experienced in building high-performing teams, elegant systems, and market-winning products in fast-moving scale-up environments.
+
+### 1KOMMA5° — Head of Design (2023–Present)
+- Founded and scaled the product design function from zero to pre-IPO unicorn
+- Led design ops, design systems, and harmonization across the digital product ecosystem
+- Reduced design lead time by 42% and frontend lead time by 38% across the organization
+- Led comprehensive product design across 6 products: Heartbeat App, Offer Tool, Order Route, Customer Portal, Service App, and Maintenance Portal
+- Heartbeat App achieved 4.7 app store rating and 25% reduction in YoY CS tickets
+- Led AI-design transformation — 100% of designers shipping production code via AI-enabled workflows
+
+### Opinary — Senior Product Designer (2022–2023)
+- Owned comprehensive design process for Self Service platform, Stream Ad, and Flex Poll products
+- Built & maintained atomic design system from scratch, resulting in 28% reduction in design lead time and 19% reduction in frontend dev lead time
+- Releases directly contributed to 34% uplift in company revenue and helped facilitate global partnerships
+- Senior designer in team of 4; directly mentored junior & mid designers
+
+### Songstats — Lead Product Designer (2020–2022)
+- Owned comprehensive design process for Audience Tab, Data Integrations, and Promotion Tools
+- Audience Tab reached 96% feature adoption rate in 30 days — highest in company history
+- 24% organic product growth within 90 days of feature launch
+- Drove product strategy alongside CEO and CPO to uncover market opportunities
+
+### Yance — Product Designer (2019–2020)
+- Owned 0→1 product design for at-home sports training platform
+- Drove end-to-end design process from user research, analysis, to final product design
+
+### Education
+- University of Colorado — Bachelor of Arts, Economics
+
+When someone asks for Justin's resume, format it beautifully with clear sections, bullet points, and bold headings. Do NOT add any closing text about downloading, getting the full version, or mentioning a PDF at the end. Do NOT say things like "Want the full version?" or "You can download..." — a download button is automatically added by the UI. End the response after the last section of the resume content.
 
 ## What He's Looking For
 

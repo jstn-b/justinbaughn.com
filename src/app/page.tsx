@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChatBar } from "@/components/chat-bar";
 import { ChatView } from "@/components/chat-view";
@@ -19,6 +19,8 @@ export default function Home() {
     setInitialMessage(undefined);
   }, []);
 
+  const headshotRef = useRef<HTMLVideoElement>(null);
+
   return (
     <AnimatePresence mode="wait">
       {!chatActive ? (
@@ -31,40 +33,61 @@ export default function Home() {
           className="flex flex-col min-h-full"
         >
           <main className="flex-1 flex flex-col justify-center items-center px-6 sm:px-10 pt-12 sm:pt-16 pb-64 text-center">
-            <div className="max-w-[736px]">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-                Justin Baughn
-              </h1>
-              <p className="mt-4 text-xl sm:text-2xl font-medium text-foreground">
-                Head of Product Design
-              </p>
-              <p className="mt-8 text-base sm:text-lg leading-relaxed text-foreground/60 mx-auto max-w-2xl">
-                Leading at the intersection of design, product, business, and AI
-                to drive impact at scale. Currently combating the global climate
-                crisis at{" "}
-                <a
-                  href="https://1k5.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/80 underline underline-offset-4 hover:text-foreground transition-colors"
-                >
-                  1K5
-                </a>
-                .
-              </p>
+            <div className="max-w-[960px]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeIn" }}
+              >
+                <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-8">
+                  <video
+                    ref={headshotRef}
+                    src="/Justin Headshot Trimmed.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h1 className="text-5xl sm:text-6xl md:text-[72px] font-bold tracking-tight leading-[1.1]">
+                  Justin Baughn
+                </h1>
+                <p className="mt-4 text-2xl sm:text-3xl md:text-[40px] font-medium text-foreground">
+                  Head of Product Design
+                </p>
+                <p className="mt-8 text-lg sm:text-xl leading-relaxed text-foreground/60 mx-auto max-w-3xl">
+                  Leading at the intersection of design, product, business, and AI
+                  to drive impact at scale. Currently combating the global climate
+                  crisis at 1K5.
+                </p>
+              </motion.div>
 
-              <div className="mt-10 w-full rounded-xl overflow-hidden">
-                <img
-                  src="/hero-phones.png"
-                  alt="1K5 energy app shown on three iPhones"
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 1.2, ease: "easeIn" }}
+                className="mt-10 w-full rounded-xl overflow-hidden"
+              >
+                <video
+                  src="/HeartbeatApp2026Trimmedv2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-auto"
                 />
-              </div>
+              </motion.div>
 
-              <p className="mt-10 text-base sm:text-lg leading-relaxed text-foreground/60 mx-auto max-w-2xl">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1.8, ease: "easeIn" }}
+                className="mt-10 text-lg sm:text-xl leading-relaxed text-foreground/60 mx-auto max-w-3xl"
+              >
                 Hands-on design leader building high-performing teams, elegant
                 systems, and products that scale.
-              </p>
+              </motion.p>
             </div>
           </main>
 

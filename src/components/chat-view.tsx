@@ -4,6 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThinkingIndicator } from "@/components/thinking-indicator";
 
 const transport = new DefaultChatTransport({ api: "/api/chat" });
 
@@ -78,6 +79,17 @@ export function ChatView({
                 status === "streaming" &&
                 idx === messages.length - 1;
 
+              const prevMessage = idx > 0 ? messages[idx - 1] : null;
+              const isResumeResponse =
+                message.role === "assistant" &&
+                !isStreaming &&
+                prevMessage?.role === "user" &&
+                prevMessage.parts.some(
+                  (p) =>
+                    p.type === "text" &&
+                    /resume/i.test(p.text),
+                );
+
               return (
                 <motion.div
                   key={message.id}
@@ -97,19 +109,45 @@ export function ChatView({
                       {message.parts.map((part, i) =>
                         part.type === "text" ? (
                           <span key={i}>
-                            {part.text.split(/(\*\*[^*]+\*\*)/).map((seg, j) =>
-                              seg.startsWith("**") && seg.endsWith("**") ? (
-                                <strong key={j} className="font-bold">
-                                  {seg.slice(2, -2)}
-                                </strong>
-                              ) : (
-                                seg
-                              ),
-                            )}
+                            {part.text.split(/(^\s*---\s*$|\*\*[^*]+\*\*)/m).map((seg, j, arr) => {
+                              if (/^\s*---\s*$/.test(seg)) {
+                                return <hr key={j} className="my-5 border-0 h-px bg-foreground/10" />;
+                              }
+                              if (seg.startsWith("**") && seg.endsWith("**")) {
+                                return <strong key={j} className="font-bold">{seg.slice(2, -2)}</strong>;
+                              }
+                              const prev = j > 0 ? arr[j - 1] : "";
+                              const next = j < arr.length - 1 ? arr[j + 1] : "";
+                              let cleaned = seg;
+                              if (/^\s*---\s*$/.test(prev)) cleaned = cleaned.replace(/^\n+/, "");
+                              if (/^\s*---\s*$/.test(next)) cleaned = cleaned.replace(/\n+$/, "");
+                              return cleaned;
+                            })}
                           </span>
                         ) : null,
                       )}
                     </span>
+                    {isResumeResponse && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
+                        className="mt-4"
+                      >
+                        <a
+                          href="/Justin Baughn Resume.pdf"
+                          download
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-foreground/15 text-foreground text-sm font-medium hover:border-foreground/30 transition-colors"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          Download Resume
+                        </a>
+                      </motion.div>
+                    )}
                   </div>
                 </motion.div>
               );
@@ -125,13 +163,13 @@ export function ChatView({
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="flex justify-start"
               >
-                <div className="rounded-2xl px-4 py-3">
-                  <div className="flex gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce [animation-delay:0ms]" />
-                    <span className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce [animation-delay:150ms]" />
-                    <span className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce [animation-delay:300ms]" />
-                  </div>
-                </div>
+                <ThinkingIndicator
+                  lastMessage={
+                    [...messages].reverse().find((m) => m.role === "user")
+                      ?.parts.find((p) => p.type === "text")
+                      ?.text
+                  }
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -166,9 +204,8 @@ export function ChatView({
                 }}
                 rows={3}
                 placeholder="Ask me anything…"
-                disabled={isLoading}
                 autoFocus
-                className="w-full rounded-2xl border border-foreground/15 bg-background px-5 py-4 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none focus:border-foreground/30 transition-colors resize-none disabled:opacity-50"
+                className="w-full rounded-2xl border border-foreground/15 bg-background px-5 py-4 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none focus:border-foreground/30 transition-colors resize-none"
               />
               <button
                 type="submit"
@@ -183,9 +220,6 @@ export function ChatView({
               </button>
             </div>
           </form>
-          <p className="mt-2 text-center text-xs text-foreground/40">
-            This is an experimental application. The model may return incorrect or incomplete information.
-          </p>
         </div>
       </div>
     </div>
