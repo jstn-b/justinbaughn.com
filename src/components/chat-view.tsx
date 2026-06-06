@@ -10,7 +10,27 @@ function StreamingWords({ text }: { text: string }) {
   const prevLengthRef = useRef(0);
   const [revealedAt] = useState(() => new Map<number, number>());
 
-  const words = useMemo(() => text.split(/(\s+)/), [text]);
+  const segments = useMemo(() => {
+    const parts: { text: string; bold: boolean }[] = [];
+    text.split(/(\*\*[^*]+\*\*)/).forEach((seg) => {
+      if (seg.startsWith("**") && seg.endsWith("**")) {
+        parts.push({ text: seg.slice(2, -2), bold: true });
+      } else if (seg) {
+        parts.push({ text: seg, bold: false });
+      }
+    });
+    return parts;
+  }, [text]);
+
+  const words = useMemo(() => {
+    const result: { word: string; bold: boolean }[] = [];
+    segments.forEach((seg) => {
+      seg.text.split(/(\s+)/).forEach((word) => {
+        result.push({ word, bold: seg.bold });
+      });
+    });
+    return result;
+  }, [segments]);
 
   const now = Date.now();
   words.forEach((_, i) => {
@@ -25,10 +45,12 @@ function StreamingWords({ text }: { text: string }) {
 
   return (
     <>
-      {words.map((word, i) => {
+      {words.map(({ word, bold }, i) => {
         const revealTime = revealedAt.get(i) ?? now;
         const age = now - revealTime;
         const isNew = age < 600;
+
+        const content = bold ? <strong className="font-bold">{word}</strong> : word;
 
         return (
           <span
@@ -36,7 +58,7 @@ function StreamingWords({ text }: { text: string }) {
             className={isNew ? "streaming-word" : undefined}
             style={isNew ? { animationDelay: `${Math.min(i - prevLengthRef.current, 8) * 30}ms` } : undefined}
           >
-            {word}
+            {content}
           </span>
         );
       })}
@@ -59,6 +81,20 @@ export function ChatView({
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const sentInitial = useRef(false);
+  const [showResponse, setShowResponse] = useState(true);
+  const thinkingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (status === "submitted") {
+      setShowResponse(false);
+      thinkingTimerRef.current = setTimeout(() => {
+        setShowResponse(true);
+      }, 2000);
+    }
+    return () => {
+      if (thinkingTimerRef.current) clearTimeout(thinkingTimerRef.current);
+    };
+  }, [status]);
 
   useEffect(() => {
     if (initialMessage && !sentInitial.current) {
@@ -80,6 +116,7 @@ export function ChatView({
   }
 
   const isLoading = status === "submitted" || status === "streaming";
+  const isThinking = isLoading && !showResponse;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
@@ -112,10 +149,12 @@ export function ChatView({
         <div className="max-w-[736px] mx-auto space-y-6 py-4">
           <AnimatePresence initial={false}>
             {messages.map((message, idx) => {
+              const isLastAssistant =
+                message.role === "assistant" && idx === messages.length - 1;
               const isStreaming =
-                message.role === "assistant" &&
-                status === "streaming" &&
-                idx === messages.length - 1;
+                isLastAssistant && status === "streaming";
+
+              if (isLastAssistant && isThinking) return null;
 
               const prevMessage = idx > 0 ? messages[idx - 1] : null;
               const isResumeResponse =
@@ -197,7 +236,7 @@ export function ChatView({
           </AnimatePresence>
 
           <AnimatePresence>
-            {status === "submitted" && (
+            {isThinking && (
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -5,33 +5,31 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const THINKING_STEPS: Record<string, string[]> = {
   design: [
-    "Reviewing Justin's design background…",
-    "Compiling information on his design journey…",
-    "Pulling together key projects and milestones…",
+    "Digging into the design portfolio…",
+    "Connecting projects to the bigger picture…",
   ],
   leadership: [
-    "Reflecting on Justin's leadership approach…",
-    "Gathering insights on team building…",
-    "Compiling his management philosophy…",
+    "Reflecting on how the teams were built…",
+    "Tracing decisions back to outcomes…",
   ],
   philosophy: [
-    "Considering Justin's design principles…",
-    "Reviewing his core beliefs on craft…",
-    "Pulling together his design philosophy…",
+    "Grounding this in first principles…",
+    "Connecting beliefs to real work…",
   ],
   career: [
-    "Reviewing Justin's career history…",
-    "Compiling roles and companies…",
-    "Gathering key career highlights…",
+    "Mapping out the career arc…",
+    "Pinpointing the relevant experience…",
   ],
   contact: [
-    "Looking up contact information…",
-    "Pulling together the best ways to reach Justin…",
+    "Locating the best way to connect…",
+  ],
+  resume: [
+    "Assembling the full picture…",
+    "Structuring the career narrative…",
   ],
   default: [
-    "Thinking about this…",
-    "Reviewing what I know…",
-    "Putting together a response…",
+    "Reviewing Justin's background…",
+    "Connecting the dots…",
   ],
 };
 
@@ -47,6 +45,8 @@ function getSteps(message: string): string[] {
     return THINKING_STEPS.career;
   if (lower.includes("contact") || lower.includes("reach") || lower.includes("email") || lower.includes("linkedin"))
     return THINKING_STEPS.contact;
+  if (lower.includes("resume") || lower.includes("cv") || lower.includes("background"))
+    return THINKING_STEPS.resume;
   return THINKING_STEPS.default;
 }
 
