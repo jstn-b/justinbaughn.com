@@ -71,7 +71,7 @@ export function ChatBar({
             <button
               key={hint.label}
               onClick={() => onActivate(hint.prompt)}
-              className="px-4 py-2 text-sm rounded-2xl border border-foreground/15 bg-background text-foreground hover:border-foreground/30 transition-colors cursor-pointer"
+              className="px-4 py-2 text-sm rounded-2xl border border-foreground/15 bg-background text-secondary hover:border-foreground/30 transition-colors cursor-pointer"
             >
               {hint.label}
             </button>

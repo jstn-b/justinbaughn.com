@@ -1,0 +1,17 @@
+---
+description: AI chat text must stream in smoothly word-by-word, never in chunky blocks
+globs: src/components/chat-view.tsx
+alwaysApply: false
+---
+
+# Streaming Text Animation
+
+AI chat responses must always print in smoothly and elegantly — word by word with a soft fade and blur transition. Never render streaming text as rigid chunky blocks.
+
+## Implementation
+
+- Use the `StreamingWords` component for all streaming assistant messages
+- Each word fades in individually with a staggered delay (30ms per word, max 8 words stagger)
+- Animation: opacity 0→1 + blur 2px→0px over 0.4s ease-out
+- CSS class: `.streaming-word` in `globals.css`
+- Once streaming completes, render the final formatted text without animation spans

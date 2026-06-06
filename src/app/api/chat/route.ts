@@ -3,12 +3,13 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-const corpus = readFileSync(
-  join(process.cwd(), "src/content/justin.md"),
-  "utf-8",
-);
+function getSystemPrompt() {
+  const corpus = readFileSync(
+    join(process.cwd(), "src/content/justin.md"),
+    "utf-8",
+  );
 
-const systemPrompt = `You are the AI assistant on Justin Baughn's personal portfolio website. You speak on Justin's behalf to visitors — potential collaborators, employers, and peers.
+  return `You are the AI assistant on Justin Baughn's personal portfolio website. You speak on Justin's behalf to visitors — potential collaborators, employers, and peers.
 
 ## Personality and Tone
 - Warm, direct, and confident without being boastful.
@@ -32,6 +33,7 @@ const systemPrompt = `You are the AI assistant on Justin Baughn's personal portf
 
 ## Knowledge Base
 ${corpus}`;
+}
 
 export const maxDuration = 30;
 
@@ -40,7 +42,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: anthropic("claude-sonnet-4-20250514"),
-    system: systemPrompt,
+    system: getSystemPrompt(),
     messages: await convertToModelMessages(messages),
   });
 

@@ -2,9 +2,47 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThinkingIndicator } from "@/components/thinking-indicator";
+
+function StreamingWords({ text }: { text: string }) {
+  const prevLengthRef = useRef(0);
+  const [revealedAt] = useState(() => new Map<number, number>());
+
+  const words = useMemo(() => text.split(/(\s+)/), [text]);
+
+  const now = Date.now();
+  words.forEach((_, i) => {
+    if (!revealedAt.has(i)) {
+      revealedAt.set(i, now);
+    }
+  });
+
+  useEffect(() => {
+    prevLengthRef.current = words.length;
+  }, [words.length]);
+
+  return (
+    <>
+      {words.map((word, i) => {
+        const revealTime = revealedAt.get(i) ?? now;
+        const age = now - revealTime;
+        const isNew = age < 600;
+
+        return (
+          <span
+            key={i}
+            className={isNew ? "streaming-word" : undefined}
+            style={isNew ? { animationDelay: `${Math.min(i - prevLengthRef.current, 8) * 30}ms` } : undefined}
+          >
+            {word}
+          </span>
+        );
+      })}
+    </>
+  );
+}
 
 const transport = new DefaultChatTransport({ api: "/api/chat" });
 
@@ -105,24 +143,28 @@ export function ChatView({
                         : "text-foreground"
                     }`}
                   >
-                    <span className={`whitespace-pre-wrap ${isStreaming ? "streaming-text" : ""}`}>
+                    <span className="whitespace-pre-wrap">
                       {message.parts.map((part, i) =>
                         part.type === "text" ? (
                           <span key={i}>
-                            {part.text.split(/(^\s*---\s*$|\*\*[^*]+\*\*)/m).map((seg, j, arr) => {
-                              if (/^\s*---\s*$/.test(seg)) {
-                                return <hr key={j} className="my-5 border-0 h-px bg-foreground/10" />;
-                              }
-                              if (seg.startsWith("**") && seg.endsWith("**")) {
-                                return <strong key={j} className="font-bold">{seg.slice(2, -2)}</strong>;
-                              }
-                              const prev = j > 0 ? arr[j - 1] : "";
-                              const next = j < arr.length - 1 ? arr[j + 1] : "";
-                              let cleaned = seg;
-                              if (/^\s*---\s*$/.test(prev)) cleaned = cleaned.replace(/^\n+/, "");
-                              if (/^\s*---\s*$/.test(next)) cleaned = cleaned.replace(/\n+$/, "");
-                              return cleaned;
-                            })}
+                            {isStreaming ? (
+                              <StreamingWords text={part.text} />
+                            ) : (
+                              part.text.split(/(^\s*---\s*$|\*\*[^*]+\*\*)/m).map((seg, j, arr) => {
+                                if (/^\s*---\s*$/.test(seg)) {
+                                  return <hr key={j} className="my-5 border-0 h-px bg-foreground/10" />;
+                                }
+                                if (seg.startsWith("**") && seg.endsWith("**")) {
+                                  return <strong key={j} className="font-bold">{seg.slice(2, -2)}</strong>;
+                                }
+                                const prev = j > 0 ? arr[j - 1] : "";
+                                const next = j < arr.length - 1 ? arr[j + 1] : "";
+                                let cleaned = seg;
+                                if (/^\s*---\s*$/.test(prev)) cleaned = cleaned.replace(/^\n+/, "");
+                                if (/^\s*---\s*$/.test(next)) cleaned = cleaned.replace(/\n+$/, "");
+                                return cleaned;
+                              })
+                            )}
                           </span>
                         ) : null,
                       )}

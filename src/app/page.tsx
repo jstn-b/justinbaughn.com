@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChatBar } from "@/components/chat-bar";
 import { ChatView } from "@/components/chat-view";
@@ -20,6 +20,23 @@ export default function Home() {
   }, []);
 
   const headshotRef = useRef<HTMLVideoElement>(null);
+  const animationRef = useRef<Animation | null>(null);
+
+  const carouselRef = useCallback((el: HTMLDivElement | null) => {
+    if (animationRef.current) {
+      animationRef.current.cancel();
+      animationRef.current = null;
+    }
+    if (!el) return;
+    const anim = el.animate(
+      [
+        { transform: "translateX(0)" },
+        { transform: "translateX(-1536px)" },
+      ],
+      { duration: 14000, iterations: Infinity, easing: "linear" }
+    );
+    animationRef.current = anim;
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
@@ -42,21 +59,21 @@ export default function Home() {
                 <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-8">
                   <video
                     ref={headshotRef}
-                    src="/Justin Headshot Trimmed.mp4"
+                    src="/Justin Video 2.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-[152%] h-[152%] object-cover object-[center_20%] translate-x-[1%] -translate-y-[10%]"
                   />
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-[72px] font-bold tracking-tight leading-[1.1]">
                   Justin Baughn
                 </h1>
-                <p className="mt-4 text-2xl sm:text-3xl md:text-[40px] font-medium text-foreground">
+                <p className="mt-[24px] text-2xl sm:text-3xl md:text-[40px] font-medium text-foreground">
                   Head of Product Design
                 </p>
-                <p className="mt-8 text-lg sm:text-xl leading-relaxed text-foreground/60 mx-auto max-w-3xl">
+                <p className="mt-[32px] text-[22px] leading-relaxed text-secondary mx-auto">
                   Leading at the intersection of design, product, business, and AI
                   to drive impact at scale. Currently combating the global climate
                   crisis at 1K5.
@@ -67,7 +84,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 1.2, ease: "easeIn" }}
-                className="mt-10 w-full rounded-xl overflow-hidden"
+                className="mt-16 w-full rounded-xl overflow-hidden"
               >
                 <video
                   src="/HeartbeatApp2026Trimmedv2.mp4"
@@ -83,12 +100,45 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1.8, ease: "easeIn" }}
-                className="mt-10 text-lg sm:text-xl leading-relaxed text-foreground/60 mx-auto max-w-3xl"
+                className="mt-[160px] px-[40px] text-[32px] leading-[1.4em] text-secondary mx-auto"
               >
                 Hands-on design leader building high-performing teams, elegant
                 systems, and products that scale.
               </motion.p>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2, delay: 2.2, ease: "easeIn" }}
+              className="relative mt-[120px] max-w-[960px] mx-auto"
+            >
+              <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+              <div
+                className="overflow-hidden"
+                onMouseEnter={() => { if (animationRef.current) animationRef.current.playbackRate = 0.5; }}
+                onMouseLeave={() => { if (animationRef.current) animationRef.current.playbackRate = 1; }}
+              >
+                <div ref={carouselRef} className="flex carousel-track">
+                  {Array.from({ length: 2 }).flatMap((_, dupeIdx) =>
+                    [
+                      "/Source Page - Dark Mode.png",
+                      "/Audience Tab - Dark.png",
+                      "/No Vote Design.png",
+                      "/Opinary Thumbnail.png",
+                    ].map((src, i) => (
+                      <div
+                        key={`${dupeIdx}-${i}`}
+                        className="shrink-0 w-[360px] h-[360px] rounded-2xl bg-foreground/[0.06] overflow-hidden mr-6"
+                      >
+                        {src && <img src={src} alt="" className="w-full h-full object-cover" />}
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </motion.div>
           </main>
 
           <ChatBar onActivate={handleActivate} />

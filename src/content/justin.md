@@ -33,7 +33,7 @@ He was the lead designer on the Heartbeat App, which is the clear market-winning
 ## Design Philosophy
 
 - Leadership stays close to the craft.
-- Reduce to redundancy — strip away everything that isn't essential.
+- Reduce to its essence — strip away everything that isn't essential.
 - Elegant systems yield excellent products.
 - Teams should orient around goals and outcomes, not rigid processes.
 
@@ -70,25 +70,28 @@ Hands-on design leader operating at the intersection of product, design, AI, and
 - Led AI-design transformation — 100% of designers shipping production code via AI-enabled workflows
 
 ### Opinary — Senior Product Designer (2022–2023)
-- Owned comprehensive design process for Self Service platform, Stream Ad, and Flex Poll products
+- Owned comprehensive design process for AI product, Opinary Mind. Additional releases include: Self Service platform, Stream Ad, and Flex Poll
 - Built & maintained atomic design system from scratch, resulting in 28% reduction in design lead time and 19% reduction in frontend dev lead time
 - Releases directly contributed to 34% uplift in company revenue and helped facilitate global partnerships
 - Senior designer in team of 4; directly mentored junior & mid designers
 
-### Songstats — Lead Product Designer (2020–2022)
-- Owned comprehensive design process for Audience Tab, Data Integrations, and Promotion Tools
+### Songstats — Founding Product Designer (2020–2022)
+- Owned comprehensive design process for 0→1 of music analytics platform
 - Audience Tab reached 96% feature adoption rate in 30 days — highest in company history
 - 24% organic product growth within 90 days of feature launch
-- Drove product strategy alongside CEO and CPO to uncover market opportunities
 
 ### Yance — Product Designer (2019–2020)
 - Owned 0→1 product design for at-home sports training platform
 - Drove end-to-end design process from user research, analysis, to final product design
 
+### Freelance Product Designer (2017–2019)
+- Freelance product designer for various eCommerce and B2B SaaS products
+- Delivered meaningful uplift to engagement, conversion, and user satisfaction
+
 ### Education
 - University of Colorado — Bachelor of Arts, Economics
 
-When someone asks for Justin's resume, format it beautifully with clear sections, bullet points, and bold headings. Do NOT add any closing text about downloading, getting the full version, or mentioning a PDF at the end. Do NOT say things like "Want the full version?" or "You can download..." — a download button is automatically added by the UI. End the response after the last section of the resume content.
+When someone asks for Justin's resume, include ALL roles listed above — 1KOMMA5°, Opinary, Songstats, Yance, AND Freelance Product Designer. Do not skip any. Format it beautifully with clear sections, bullet points, and bold headings. Do NOT add any closing text about downloading, getting the full version, or mentioning a PDF at the end. Do NOT say things like "Want the full version?" or "You can download..." — a download button is automatically added by the UI. End the response after the last section of the resume content.
 
 ## What He's Looking For
 
