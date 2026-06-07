@@ -145,8 +145,8 @@ export function ChatView({
       </header>
 
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 sm:px-6 pb-48">
-        <div className="max-w-[736px] mx-auto space-y-6 py-4">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 pb-48">
+        <div className="max-w-[736px] mx-auto space-y-6 py-4 min-w-0">
           <AnimatePresence initial={false}>
             {messages.map((message, idx) => {
               const isLastAssistant =
@@ -176,7 +176,7 @@ export function ChatView({
                   className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                    className={`max-w-full rounded-2xl px-4 py-3 text-sm leading-relaxed break-words ${
                       message.role === "user"
                         ? "bg-foreground/[0.06] text-foreground"
                         : "text-foreground"
@@ -258,8 +258,8 @@ export function ChatView({
       </div>
 
       {/* Floating Input */}
-      <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none">
-        <div className="max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto">
+      <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden">
+        <div className="w-full max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border">
           <form
             onSubmit={(e) => {
               e.preventDefault();
