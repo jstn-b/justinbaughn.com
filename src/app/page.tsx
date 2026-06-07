@@ -75,7 +75,7 @@ export default function Home() {
                 <p className="mt-[24px] text-2xl sm:text-3xl md:text-[40px] font-medium text-foreground">
                   Head of Product Design
                 </p>
-                <p className="mt-[32px] text-[22px] leading-relaxed text-secondary mx-auto">
+                <p className="mt-[32px] text-[17px] sm:text-[22px] leading-relaxed text-secondary mx-auto">
                   Leading at the intersection of design, product, business, and AI
                   to drive impact at scale. Currently combating the global climate
                   crisis at 1K5.
