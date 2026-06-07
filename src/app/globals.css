@@ -71,6 +71,14 @@ body {
   will-change: transform;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .thinking-shimmer-text {
   color: transparent;
   background: linear-gradient(

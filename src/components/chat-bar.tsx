@@ -66,16 +66,18 @@ export function ChatBar({
           </div>
         </form>
 
-        <div className="flex flex-wrap justify-center gap-2">
-          {HINTS.map((hint) => (
-            <button
-              key={hint.label}
-              onClick={() => onActivate(hint.prompt)}
-              className="px-4 py-2 text-sm rounded-2xl border border-foreground/15 bg-background text-secondary hover:border-foreground/30 transition-colors cursor-pointer"
-            >
-              {hint.label}
-            </button>
-          ))}
+        <div className="w-full overflow-x-auto sm:overflow-x-visible scrollbar-hide">
+          <div className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 w-max sm:w-auto mx-auto">
+            {HINTS.map((hint) => (
+              <button
+                key={hint.label}
+                onClick={() => onActivate(hint.prompt)}
+                className="shrink-0 px-4 py-2 text-sm rounded-full border border-foreground/15 bg-black text-secondary hover:bg-[#111] transition-colors cursor-pointer"
+              >
+                {hint.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>

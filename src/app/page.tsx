@@ -49,7 +49,7 @@ export default function Home() {
           transition={{ duration: 0.25 }}
           className="flex flex-col min-h-full"
         >
-          <main className="flex-1 flex flex-col justify-center items-center px-6 sm:px-10 pt-12 sm:pt-16 pb-64 text-center">
+          <main className="flex-1 flex flex-col justify-center items-center px-4 sm:px-10 pt-12 sm:pt-16 pb-64 text-center">
             <div className="max-w-[960px]">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -64,7 +64,7 @@ export default function Home() {
                     loop
                     muted
                     playsInline
-                    className="w-[152%] h-[152%] object-cover object-[center_20%] translate-x-[1%] -translate-y-[10%]"
+                    className="w-[240%] h-[240%] object-cover object-[center_20%] translate-x-[calc(1%-1px)] -translate-y-[calc(16%+7px)]"
                   />
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-[72px] font-bold tracking-tight leading-[1.1]">
@@ -92,7 +92,7 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-auto"
+                  className="w-full h-[calc(56vw+64px)] sm:h-auto object-cover"
                 />
               </motion.div>
 
@@ -100,7 +100,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1.8, ease: "easeIn" }}
-                className="mt-[160px] px-[40px] text-[32px] leading-[1.4em] text-secondary mx-auto"
+                className="mt-[160px] px-0 sm:px-[40px] text-[24px] sm:text-[32px] leading-[1.4em] text-secondary mx-auto"
               >
                 Hands-on design leader building high-performing teams, elegant
                 systems, and products that scale.
