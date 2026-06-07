@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThinkingIndicator } from "@/components/thinking-indicator";
 import { ChatInput } from "@/components/chat-input";
@@ -83,6 +83,28 @@ export function ChatView({
   const sentInitial = useRef(false);
   const [showResponse, setShowResponse] = useState(true);
   const thinkingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isAtBottom, setIsAtBottom] = useState(true);
+
+  const checkIfAtBottom = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const threshold = 80;
+    setIsAtBottom(el.scrollHeight - el.scrollTop - el.clientHeight < threshold);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkIfAtBottom, { passive: true });
+    return () => el.removeEventListener("scroll", checkIfAtBottom);
+  }, [checkIfAtBottom]);
+
+  const scrollToBottom = useCallback(() => {
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, []);
 
   useEffect(() => {
     if (status === "submitted") {
@@ -121,15 +143,15 @@ export function ChatView({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
       {/* Header */}
-      <header className="flex items-center gap-3 px-4 py-4 sm:px-6">
+      <header className="px-4 py-4 sm:px-6">
         <button
           onClick={handleBack}
-          className="flex items-center gap-1.5 p-2 -ml-2 rounded-lg text-foreground/60 hover:text-foreground transition-colors cursor-pointer text-sm"
-          aria-label="Back to portfolio"
+          className="p-2 -ml-2 rounded-lg text-foreground/60 hover:text-foreground transition-colors cursor-pointer"
+          aria-label="Back"
         >
           <svg
-            width="16"
-            height="16"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -140,13 +162,12 @@ export function ChatView({
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
-          Back to portfolio
         </button>
       </header>
 
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 pb-48">
-        <div className="max-w-[736px] mx-auto space-y-6 py-4 min-w-0">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 pb-28">
+        <div className="space-y-6 py-4 min-w-0">
           <AnimatePresence initial={false}>
             {messages.map((message, idx) => {
               const isLastAssistant =
@@ -176,9 +197,9 @@ export function ChatView({
                   className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-full rounded-2xl px-4 py-3 text-sm leading-relaxed break-words ${
+                    className={`max-w-full rounded-2xl text-sm leading-relaxed break-words ${
                       message.role === "user"
-                        ? "bg-foreground/[0.06] text-foreground"
+                        ? "bg-foreground/[0.06] text-foreground px-4 py-3"
                         : "text-foreground"
                     }`}
                   >
@@ -257,17 +278,40 @@ export function ChatView({
         </div>
       </div>
 
+      {/* Fade overlay + scroll-to-bottom */}
+      <AnimatePresence>
+        {!isAtBottom && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-0 inset-x-0 z-40 pointer-events-none"
+            style={{ height: "160px" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <button
+              onClick={scrollToBottom}
+              className="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-[calc(env(safe-area-inset-bottom,0px)+76px)] w-8 h-8 flex items-center justify-center rounded-full border border-foreground/20 bg-background/80 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/40 transition-colors cursor-pointer"
+              aria-label="Scroll to bottom"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Input */}
-      <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden">
-        <div className="w-full min-w-0 max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border overflow-hidden">
+      <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden pb-[env(safe-area-inset-bottom,0px)]">
+        <div className="w-full min-w-0 px-4 sm:px-6 pb-4 pointer-events-auto box-border overflow-hidden">
           <ChatInput
             onSubmit={(msg) => sendMessage({ text: msg })}
             disabled={isLoading}
             autoFocus
           />
-          <p className="mt-3 text-center text-xs text-foreground/40">
-            This model is trained to represent Justin. Results may contain minor hallucinations.
-          </p>
         </div>
       </div>
     </div>
