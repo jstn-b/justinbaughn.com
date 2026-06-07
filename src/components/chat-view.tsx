@@ -266,7 +266,7 @@ export function ChatView({
             autoFocus
           />
           <p className="mt-2 text-center text-xs text-foreground/30">
-            This is a custom trained AI model. All rights reserved.
+            This model is trained to represent Justin. Results still may contain minor hallucinations.
           </p>
         </div>
       </div>
