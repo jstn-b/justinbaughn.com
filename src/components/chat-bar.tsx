@@ -4,9 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const HINTS = [
-  { label: "Design Journey", prompt: "Tell me about Justin's design journey" },
-  { label: "Leadership Style", prompt: "Tell me about Justin's leadership style" },
-  { label: "Design Philosophy", prompt: "Tell me about Justin's design philosophy" },
+  { label: "Design journey", prompt: "Tell me about Justin's design journey" },
+  { label: "Leadership style", prompt: "Tell me about Justin's leadership style" },
+  { label: "Design philosophy", prompt: "Tell me about Justin's design philosophy" },
   { label: "Resume", prompt: "Show me Justin's resume" },
 ];
 
@@ -36,26 +36,17 @@ export function ChatBar({
           className="w-full"
         >
           <div className="relative">
-            <textarea
+            <input
+              type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  if (input.trim()) {
-                    onActivate(input.trim());
-                    setInput("");
-                  }
-                }
-              }}
-              rows={3}
               placeholder="Ask me anything…"
-              className="w-full rounded-2xl border border-foreground/15 bg-background px-5 py-4 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none focus:border-foreground/30 transition-colors resize-none"
+              className="w-full rounded-full bg-[#1a1a1a] px-5 py-3 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className={`absolute right-3 bottom-4 p-1.5 rounded-lg transition-colors cursor-pointer ${input.trim() ? "bg-foreground text-background" : "bg-foreground/20 text-background/40"}`}
+              className={`absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full transition-colors cursor-pointer ${input.trim() ? "bg-foreground text-background" : "bg-foreground/20 text-background/40"}`}
               aria-label="Send"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -72,7 +63,7 @@ export function ChatBar({
               <button
                 key={hint.label}
                 onClick={() => onActivate(hint.prompt)}
-                className="shrink-0 px-4 py-2 text-sm rounded-full border border-foreground/15 bg-black text-secondary hover:bg-[#111] transition-colors cursor-pointer"
+                className="shrink-0 px-4 py-2 text-sm rounded-full border border-foreground/15 bg-black text-foreground hover:bg-[#111] transition-colors cursor-pointer"
               >
                 {hint.label}
               </button>

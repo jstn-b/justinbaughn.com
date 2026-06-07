@@ -130,7 +130,7 @@ export default function Home() {
                     ].map((src, i) => (
                       <div
                         key={`${dupeIdx}-${i}`}
-                        className="shrink-0 w-[360px] h-[360px] rounded-2xl bg-foreground/[0.06] overflow-hidden mr-6"
+                        className="shrink-0 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] rounded-2xl bg-foreground/[0.06] overflow-hidden mr-6"
                       >
                         {src && <img src={src} alt="" className="w-full h-full object-cover" />}
                       </div>
