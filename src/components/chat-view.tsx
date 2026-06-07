@@ -265,6 +265,9 @@ export function ChatView({
             disabled={isLoading}
             autoFocus
           />
+          <p className="mt-2 text-center text-xs text-foreground/30">
+            This is a custom trained AI model. All rights reserved.
+          </p>
         </div>
       </div>
     </div>
