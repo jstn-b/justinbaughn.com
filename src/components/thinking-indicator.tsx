@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { MorphSpinner } from "@/components/morph-spinner";
 
 const THINKING_STEPS: Record<string, string[]> = {
   design: [
@@ -63,7 +64,8 @@ export function ThinkingIndicator({ lastMessage }: { lastMessage?: string }) {
   }, [steps]);
 
   return (
-    <div className="px-4 py-3">
+    <div className="flex items-center gap-3 px-4 py-3">
+      <MorphSpinner />
       <AnimatePresence mode="wait">
         <motion.span
           key={stepIndex}

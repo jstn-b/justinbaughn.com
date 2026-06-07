@@ -34,7 +34,7 @@ export function ChatInput({
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask me anything…"
+          placeholder="Ask about Justin…"
           autoFocus={autoFocus}
           className="w-full rounded-full border border-foreground/15 bg-black px-5 py-3 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors"
         />

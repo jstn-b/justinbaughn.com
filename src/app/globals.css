@@ -79,6 +79,61 @@ body {
   display: none;
 }
 
+@keyframes morphShape {
+  0% {
+    border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%;
+    transform: scale(1) rotate(0deg);
+  }
+  8% {
+    border-radius: 35% 65% 58% 42% / 55% 38% 62% 45%;
+    transform: scale(1.03) rotate(12deg);
+  }
+  16% {
+    border-radius: 62% 38% 42% 58% / 38% 62% 44% 56%;
+    transform: scale(0.97) rotate(28deg);
+  }
+  24% {
+    border-radius: 44% 56% 66% 34% / 60% 42% 58% 40%;
+    transform: scale(1.05) rotate(55deg);
+  }
+  32% {
+    border-radius: 58% 42% 36% 64% / 44% 56% 38% 62%;
+    transform: scale(0.96) rotate(80deg);
+  }
+  40% {
+    border-radius: 40% 60% 54% 46% / 66% 34% 60% 40%;
+    transform: scale(1.02) rotate(110deg);
+  }
+  48% {
+    border-radius: 66% 34% 44% 56% / 40% 60% 46% 54%;
+    transform: scale(0.98) rotate(145deg);
+  }
+  56% {
+    border-radius: 38% 62% 60% 40% / 54% 46% 56% 44%;
+    transform: scale(1.04) rotate(175deg);
+  }
+  64% {
+    border-radius: 56% 44% 38% 62% / 42% 58% 64% 36%;
+    transform: scale(0.95) rotate(210deg);
+  }
+  72% {
+    border-radius: 42% 58% 62% 38% / 58% 42% 36% 64%;
+    transform: scale(1.03) rotate(248deg);
+  }
+  80% {
+    border-radius: 60% 40% 46% 54% / 36% 64% 58% 42%;
+    transform: scale(0.97) rotate(285deg);
+  }
+  88% {
+    border-radius: 36% 64% 56% 44% / 62% 38% 42% 58%;
+    transform: scale(1.02) rotate(320deg);
+  }
+  100% {
+    border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
 .thinking-shimmer-text {
   color: transparent;
   background: linear-gradient(
