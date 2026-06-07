@@ -312,6 +312,9 @@ export function ChatView({
             disabled={isLoading}
             autoFocus
           />
+          <p className="mt-3 text-center text-xs text-foreground/40 hidden sm:block">
+            This model is trained to represent Justin. Results may contain minor hallucinations.
+          </p>
         </div>
       </div>
     </div>
