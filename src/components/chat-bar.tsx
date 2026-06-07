@@ -20,9 +20,9 @@ export function ChatBar({
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, delay: 4, ease: [0.25, 0.1, 0.25, 1] }}
-      className="fixed bottom-0 inset-x-0 z-50 pointer-events-none"
+      className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden"
     >
-      <div className="max-w-[736px] mx-auto px-4 pb-6 flex flex-col items-center gap-3 pointer-events-auto">
+      <div className="w-full max-w-[736px] mx-auto px-4 pb-6 flex flex-col items-center gap-3 pointer-events-auto box-border">
         <ChatInput onSubmit={(msg) => onActivate(msg)} />
 
         <div className="w-full overflow-x-auto sm:overflow-x-visible scrollbar-hide">

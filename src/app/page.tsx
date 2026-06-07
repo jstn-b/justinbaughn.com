@@ -50,7 +50,7 @@ export default function Home() {
           className="flex flex-col min-h-full"
         >
           <main className="flex-1 flex flex-col justify-center items-center px-4 sm:px-10 pt-12 sm:pt-16 pb-64 text-center">
-            <div className="max-w-[960px]">
+            <div className="w-full max-w-[960px]">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
