@@ -143,7 +143,7 @@ export function ChatView({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
       {/* Header */}
-      <header className="px-4 py-4 sm:px-6 max-w-[960px] mx-auto w-full">
+      <header className="px-4 py-4 sm:px-6 max-w-[720px] mx-auto w-full">
         <button
           onClick={handleBack}
           className="p-2 -ml-2 rounded-lg text-foreground/60 hover:text-foreground transition-colors cursor-pointer"
@@ -167,7 +167,7 @@ export function ChatView({
 
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 pb-28">
-        <div className="space-y-6 py-4 min-w-0 max-w-[960px] mx-auto">
+        <div className="space-y-6 py-4 min-w-0 max-w-[720px] mx-auto">
           <AnimatePresence initial={false}>
             {messages.map((message, idx) => {
               const isLastAssistant =
@@ -306,7 +306,7 @@ export function ChatView({
 
       {/* Floating Input */}
       <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="w-full min-w-0 px-4 sm:px-6 pb-4 pointer-events-auto box-border overflow-hidden max-w-[960px] mx-auto">
+        <div className="w-full min-w-0 px-4 sm:px-6 pb-4 pointer-events-auto box-border overflow-hidden max-w-[720px] mx-auto">
           <ChatInput
             onSubmit={(msg) => sendMessage({ text: msg })}
             disabled={isLoading}
