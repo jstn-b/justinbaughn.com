@@ -259,14 +259,14 @@ export function ChatView({
 
       {/* Floating Input */}
       <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden">
-        <div className="w-full min-w-0 max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border">
+        <div className="w-full min-w-0 max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border overflow-hidden">
           <ChatInput
             onSubmit={(msg) => sendMessage({ text: msg })}
             disabled={isLoading}
             autoFocus
           />
-          <p className="mt-2 text-center text-xs text-foreground/30">
-            This model is trained to represent Justin. Results still may contain minor hallucinations.
+          <p className="mt-3 text-center text-xs text-foreground/40">
+            This model is trained to represent Justin. Results may contain minor hallucinations.
           </p>
         </div>
       </div>
