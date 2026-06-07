@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChatBar } from "@/components/chat-bar";
 import { ChatView } from "@/components/chat-view";
@@ -20,6 +20,7 @@ export default function Home() {
   }, []);
 
   const headshotRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const animationRef = useRef<Animation | null>(null);
 
   const carouselRef = useCallback((el: HTMLDivElement | null) => {
@@ -56,7 +57,7 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeIn" }}
               >
-                <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-8">
+                <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-8 bg-[#79D4D3]">
                   <video
                     ref={headshotRef}
                     src="/Justin Video 2.mp4"
@@ -64,7 +65,8 @@ export default function Home() {
                     loop
                     muted
                     playsInline
-                    className="w-[240%] h-[240%] object-cover object-[center_20%] translate-x-[calc(1%-1px)] -translate-y-[calc(16%+7px)]"
+                    onLoadedData={() => setVideoLoaded(true)}
+                    className={`w-[240%] h-[240%] object-cover object-[center_20%] -translate-x-[3px] -translate-y-[calc(16%+7px)] transition-opacity duration-500 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
                   />
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-[72px] font-bold tracking-tight leading-[1.1]">
