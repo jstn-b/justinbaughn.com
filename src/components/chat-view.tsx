@@ -259,7 +259,7 @@ export function ChatView({
 
       {/* Floating Input */}
       <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden">
-        <div className="w-full max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border">
+        <div className="w-full min-w-0 max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border">
           <ChatInput
             onSubmit={(msg) => sendMessage({ text: msg })}
             disabled={isLoading}

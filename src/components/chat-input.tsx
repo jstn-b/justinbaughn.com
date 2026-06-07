@@ -27,16 +27,16 @@ export function ChatInput({
         e.preventDefault();
         handleSubmit();
       }}
-      className="w-full"
+      className="w-full min-w-0"
     >
-      <div className="relative">
+      <div className="relative min-w-0 overflow-hidden rounded-full">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about Justin…"
           autoFocus={autoFocus}
-          className="w-full rounded-full border border-foreground/15 bg-black px-5 py-3 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors"
+          className="w-full min-w-0 rounded-full border border-foreground/15 bg-black px-5 py-3 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors"
         />
         <button
           type="submit"
