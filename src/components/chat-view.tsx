@@ -5,6 +5,7 @@ import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThinkingIndicator } from "@/components/thinking-indicator";
+import { ChatInput } from "@/components/chat-input";
 
 function StreamingWords({ text }: { text: string }) {
   const prevLengthRef = useRef(0);
@@ -78,7 +79,6 @@ export function ChatView({
   const { messages, sendMessage, status, setMessages } = useChat({
     transport,
   });
-  const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const sentInitial = useRef(false);
   const [showResponse, setShowResponse] = useState(true);
@@ -260,47 +260,11 @@ export function ChatView({
       {/* Floating Input */}
       <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none overflow-hidden">
         <div className="w-full max-w-[736px] mx-auto px-4 pb-6 pointer-events-auto box-border">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (input.trim() && !isLoading) {
-                sendMessage({ text: input.trim() });
-                setInput("");
-              }
-            }}
-            className="w-full"
-          >
-            <div className="relative">
-              <textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    if (input.trim() && !isLoading) {
-                      sendMessage({ text: input.trim() });
-                      setInput("");
-                    }
-                  }
-                }}
-                rows={3}
-                placeholder="Ask me anything…"
-                autoFocus
-                className="w-full rounded-2xl border border-foreground/15 bg-background px-5 py-4 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none focus:border-foreground/30 transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                disabled={isLoading || !input.trim()}
-                className={`absolute right-3 bottom-4 p-1.5 rounded-lg transition-colors cursor-pointer disabled:cursor-default ${input.trim() && !isLoading ? "bg-foreground text-background" : "bg-foreground/20 text-background/40"}`}
-                aria-label="Send"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="19" x2="12" y2="5" />
-                  <polyline points="5 12 12 5 19 12" />
-                </svg>
-              </button>
-            </div>
-          </form>
+          <ChatInput
+            onSubmit={(msg) => sendMessage({ text: msg })}
+            disabled={isLoading}
+            autoFocus
+          />
         </div>
       </div>
     </div>

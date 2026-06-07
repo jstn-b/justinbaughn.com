@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { ChatInput } from "@/components/chat-input";
 
 const HINTS = [
   { label: "Design journey", prompt: "Tell me about Justin's design journey" },
@@ -15,8 +15,6 @@ export function ChatBar({
 }: {
   onActivate: (message?: string) => void;
 }) {
-  const [input, setInput] = useState("");
-
   return (
     <motion.div
       initial={{ y: "100%" }}
@@ -25,37 +23,7 @@ export function ChatBar({
       className="fixed bottom-0 inset-x-0 z-50 pointer-events-none"
     >
       <div className="max-w-[736px] mx-auto px-4 pb-6 flex flex-col items-center gap-3 pointer-events-auto">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (input.trim()) {
-              onActivate(input.trim());
-              setInput("");
-            }
-          }}
-          className="w-full"
-        >
-          <div className="relative">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask me anything…"
-              className="w-full rounded-full bg-[#1a1a1a] px-5 py-3 pr-12 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors"
-            />
-            <button
-              type="submit"
-              disabled={!input.trim()}
-              className={`absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full transition-colors cursor-pointer ${input.trim() ? "bg-foreground text-background" : "bg-foreground/20 text-background/40"}`}
-              aria-label="Send"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-              </svg>
-            </button>
-          </div>
-        </form>
+        <ChatInput onSubmit={(msg) => onActivate(msg)} />
 
         <div className="w-full overflow-x-auto sm:overflow-x-visible scrollbar-hide">
           <div className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 w-max sm:w-auto mx-auto">
