@@ -6,7 +6,7 @@ Justin Baughn was born in Philadelphia. He studied economics at the University o
 
 ## Career Journey
 
-Justin's design career began through the lens of product strategy and growth. He became fascinated with bridging user-centric design with meaningful business outcomes. Around 2018 he began freelancing in product design.
+Justin's design career began through the lens of product strategy and growth. He became fascinated with bridging user-centric design with meaningful business outcomes. Around 2017 he began freelancing in product design.
 
 A mission-driven mindset underlines his entire career. He views design as a lever for change in the world and has deliberately selected companies he believes in deeply. His career has been focused mostly in startups and scaleups.
 
