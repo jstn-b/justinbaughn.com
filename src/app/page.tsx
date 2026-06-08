@@ -122,7 +122,7 @@ export default function Home() {
                 onMouseEnter={() => { if (animationRef.current) animationRef.current.playbackRate = 0.5; }}
                 onMouseLeave={() => { if (animationRef.current) animationRef.current.playbackRate = 1; }}
               >
-                <div ref={carouselRef} className="flex carousel-track">
+                <div ref={carouselRef} className="flex w-max carousel-track">
                   {Array.from({ length: 2 }).flatMap((_, dupeIdx) =>
                     [
                       "/source-page.jpg",
