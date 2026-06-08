@@ -6,45 +6,30 @@ Justin Baughn was born in Philadelphia. He studied economics at the University o
 
 ## Career Journey
 
-Justin's design career began through the lens of product strategy and growth. He became fascinated with bridging user-centric design with meaningful business outcomes. Around 2017 he began freelancing in product design.
+Justin's design career began through the lens of product strategy and growth. He became fascinated with bridging user-centric design with meaningful business outcomes. Around 2017 he began freelancing in product design. A mission-driven mindset underlines his entire career. He views design as a lever for change in the world and has deliberately selected companies he believes in deeply. His career has been focused mostly in startups and scaleups.
 
-A mission-driven mindset underlines his entire career. He views design as a lever for change in the world and has deliberately selected companies he believes in deeply. His career has been focused mostly in startups and scaleups.
-
-### Yance
-
-Justin joined Yance as the founding product designer and shaped the product from 0 to 1. Yance was an online fitness platform that helped bring best-in-class video courses directly into homes.
-
-### Songstats
-
-Justin joined Songstats as the founding product designer and built the product from 0 to 1. Songstats is a music analytics product that helps artists and labels understand their release performance across numerous music distribution platforms like Spotify, SoundCloud, and Apple Music.
-
-### Opinary
-
-Justin joined Opinary as Senior Product Designer to help break down online echo chambers. He built one of the first AI-publisher products called Opinary Mind, which gave users a voice in online discourse and debate.
-
-### 1KOMMA5° (1K5)
-
-Justin joined 1KOMMA5° as the founding product designer in 2023. He believes sustainability and renewable energy are paramount to a stable future. He joined the team when they were 15 people in a coworking space and helped scale it to a 3,000-person unicorn.
-
-He was responsible for leading the design system and design team from scratch — hiring, design systems, design ops, and end-to-end product design of all digital surfaces.
-
-He was the lead designer on the Heartbeat App, which is the clear market-winning home energy management app. It has received rave reviews and marked 1K5 as a cleantech frontrunner.
+- **Freelance Product Designer (2017–2019).** Freelanced across eCommerce and B2B SaaS products, delivering meaningful uplift to engagement, conversion, and user satisfaction.
+- **Yance — Founding Product Designer (2019–2020).** Joined as the founding product designer and shaped the product from 0 to 1. Yance was an online fitness platform that helped bring best-in-class video courses directly into homes.
+- **Songstats — Founding Product Designer (2020–2022).** Joined as the founding product designer and built the product from 0 to 1. Songstats is a music analytics product that helps artists and labels understand their release performance across platforms like Spotify, SoundCloud, and Apple Music.
+- **Opinary — Senior Product Designer (2022–2023).** Joined to help break down online echo chambers. Built one of the first AI-publisher products called Opinary Mind, which gave users a voice in online discourse and debate.
+- **1KOMMA5° — Head of Design (2023–Present).** Joined as the founding product designer when the team was 15 people in a coworking space and helped scale it to a 3,000-person unicorn. Led the design system and design team from scratch — hiring, design systems, design ops, and end-to-end product design of all digital surfaces. Lead designer on the Heartbeat App, the market-winning home energy management app.
 
 ## Design Philosophy
 
-- Leadership stays close to the craft.
-- Reduce to its essence — strip away everything that isn't essential.
-- Elegant systems yield excellent products.
-- Teams should orient around goals and outcomes, not rigid processes.
+- **Design Is Not Decoration.** Design is not simply the way a product or experience looks. Design is a process of solving complex problems and driving high leverage outcomes. Design seeks to elevate a product across all considerations.
+- **Design Differentiation Is More Important Than Ever.** Building software is becoming commoditized. Patterns are shared, execution is quick. Design is one of the last durable advantages and must be deeply prioritized.
+- **Design Is A Way of Thinking, Not an Artefact.** Design was never about Figma, Sketch, or Lovable. Design is a way of thinking, a way of thoughtfully elevating the world around us. It will never die, it will just change in abstraction.
+- **The User Doesn't Care.** The user doesn't care how hard it was to build. They don't care about your roadmap or your org structure. They don't care if you used Claude Code. They care that the product works, that it solves their problem, and that it's enjoyable to use.
+- **AI Is The Ultimate Design Challenge.** Being on the frontlines of determining how humans should interact with AI is the most exciting human-computer interaction challenge of our generation.
 
 ## Leadership Style
 
-Justin looks for four key qualities in the designers he hires and mentors:
-
-- **Curiosity** — a drive to understand deeply.
-- **High agency** — the ability to move things forward without waiting for permission.
-- **End-to-end ownership** — taking responsibility from problem discovery through shipped outcome.
-- **Opinionated humility** — having strong convictions held loosely, open to being wrong.
+- **Curiosity.** A drive to understand deeply. The best designers are endlessly curious about users, systems, and the world around them.
+- **High Agency.** The ability to move things forward without waiting for permission. Great designers don't wait to be told what to do.
+- **End-to-End Ownership.** Taking responsibility from problem discovery through shipped outcome. Design doesn't end at the handoff.
+- **Opinionated Humility.** Having strong convictions held loosely, open to being wrong. The best ideas emerge when ego takes a back seat.
+- **Don't Get Attached To Titles.** Focus more on the end-result and less about job descriptions. Be willing to transcend the boundaries of your role, welcome others stepping into the boundaries of your role. That is where real collaboration thrives.
+- **Teams Should Be Flexible.** Rigid teams optimize for predictability, not progress. The best teams reconfigure around problems, not org charts. Structure should serve the work, not the other way around.
 
 ## Tools
 
