@@ -143,7 +143,8 @@ export function ChatView({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
       {/* Header */}
-      <header className="px-4 py-4 sm:px-6 max-w-[720px] mx-auto w-full">
+      <header className="px-4 py-4 sm:px-6">
+        <div className="max-w-[720px] mx-auto w-full">
         <button
           onClick={handleBack}
           className="p-2 -ml-2 rounded-lg text-foreground/60 hover:text-foreground transition-colors cursor-pointer"
@@ -163,6 +164,7 @@ export function ChatView({
             <polyline points="12 19 5 12 12 5" />
           </svg>
         </button>
+        </div>
       </header>
 
       {/* Messages */}

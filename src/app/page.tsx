@@ -32,7 +32,7 @@ export default function Home() {
     const anim = el.animate(
       [
         { transform: "translateX(0)" },
-        { transform: "translateX(-1536px)" },
+        { transform: "translateX(-50%)" },
       ],
       { duration: 14000, iterations: Infinity, easing: "linear" }
     );
@@ -60,7 +60,7 @@ export default function Home() {
                 <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mx-auto mb-8 bg-[#79D4D3]">
                   <video
                     ref={headshotRef}
-                    src="/Justin Video 2.mp4"
+                    src="/justin-video.mp4"
                     autoPlay
                     loop
                     muted
@@ -105,7 +105,7 @@ export default function Home() {
                 className="mt-[160px] px-0 sm:px-[40px] text-[24px] sm:text-[32px] leading-[1.4em] text-secondary mx-auto"
               >
                 Hands-on design leader building high-performing teams, elegant
-                systems, and products that scale.
+                systems, and market-winning products.
               </motion.p>
             </div>
 
