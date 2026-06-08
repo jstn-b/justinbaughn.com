@@ -16,20 +16,29 @@ Justin's design career began through the lens of product strategy and growth. He
 
 ## Design Philosophy
 
-- **Design Is Not Decoration.** Design is not simply the way a product or experience looks. Design is a process of solving complex problems and driving high leverage outcomes. Design seeks to elevate a product across all considerations.
-- **Design Differentiation Is More Important Than Ever.** Building software is becoming commoditized. Patterns are shared, execution is quick. Design is one of the last durable advantages and must be deeply prioritized.
-- **Design Is A Way of Thinking, Not an Artefact.** Design was never about Figma, Sketch, or Lovable. Design is a way of thinking, a way of thoughtfully elevating the world around us. It will never die, it will just change in abstraction.
-- **The User Doesn't Care.** The user doesn't care how hard it was to build. They don't care about your roadmap or your org structure. They don't care if you used Claude Code. They care that the product works, that it solves their problem, and that it's enjoyable to use.
-- **AI Is The Ultimate Design Challenge.** Being on the frontlines of determining how humans should interact with AI is the most exciting human-computer interaction challenge of our generation.
+**Design is not decoration.** Design is not simply the way a product or experience looks. Design is a process of solving complex problems and driving high leverage outcomes. Design seeks to elevate a product across all considerations.
+
+**Design differentiation is more important than ever.** Building software is becoming commoditized. Patterns are shared, execution is quick. Design is one of the last durable advantages and must be deeply prioritized.
+
+**Design is a way of thinking, not an artefact.** Design was never about Figma, Sketch, or Lovable. Design is a way of thinking, a way of thoughtfully elevating the world around us. It will never die, it will just change in abstraction.
+
+**The user doesn't care.** The user doesn't care how hard it was to build. They don't care about your roadmap or your org structure. They don't care if you used Claude Code. They care that the product works, that it solves their problem, and that it's enjoyable to use.
+
+**AI is the ultimate design challenge.** Being on the frontlines of determining how humans should interact with AI is the most exciting human-computer interaction challenge of our generation.
 
 ## Leadership Style
 
-- **Curiosity.** A drive to understand deeply. The best designers are endlessly curious about users, systems, and the world around them.
-- **High Agency.** The ability to move things forward without waiting for permission. Great designers don't wait to be told what to do.
-- **End-to-End Ownership.** Taking responsibility from problem discovery through shipped outcome. Design doesn't end at the handoff.
-- **Opinionated Humility.** Having strong convictions held loosely, open to being wrong. The best ideas emerge when ego takes a back seat.
-- **Don't Get Attached To Titles.** Focus more on the end-result and less about job descriptions. Be willing to transcend the boundaries of your role, welcome others stepping into the boundaries of your role. That is where real collaboration thrives.
-- **Teams Should Be Flexible.** Rigid teams optimize for predictability, not progress. The best teams reconfigure around problems, not org charts. Structure should serve the work, not the other way around.
+**Curiosity.** A drive to understand deeply. The best designers are endlessly curious about users, systems, and the world around them.
+
+**High agency.** The ability to move things forward without waiting for permission. Great designers don't wait to be told what to do.
+
+**End-to-end ownership.** Taking responsibility from problem discovery through shipped outcome. Design doesn't end at the handoff.
+
+**Opinionated humility.** Having strong convictions held loosely, open to being wrong. The best ideas emerge when ego takes a back seat.
+
+**Don't get attached to titles.** Focus more on the end-result and less about job descriptions. Be willing to transcend the boundaries of your role, welcome others stepping into the boundaries of your role. That is where real collaboration thrives.
+
+**Teams should be flexible.** Rigid teams optimize for predictability, not progress. The best teams reconfigure around problems, not org charts. Structure should serve the work, not the other way around.
 
 ## Tools
 

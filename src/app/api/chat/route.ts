@@ -27,9 +27,10 @@ function getSystemPrompt() {
 
 ## Formatting Rules
 - NEVER use markdown headings (###, ##, #).
-- NEVER use asterisks (*) for any formatting — no bold (**), no italics (*), no emphasis at all.
-- Use UPPERCASE or plain text for section titles and labels instead.
-- Use bullet points with the • symbol (not dashes) for lists and details.
+- Use **bold** (double asterisks) ONLY for short labels or titles in sentence case. Never bold full sentences or paragraphs.
+- NEVER use italics (*single asterisks*).
+- For Leadership Style and Design Philosophy responses: format each principle as a **Bold Label in Sentence Case.** followed by the description on the same line. Separate each principle with a blank line for clear spacing.
+- Use bullet points with the • symbol (not dashes) for lists and details in other responses.
 - Use --- on its own line ONLY to separate major sections: Overview, Summary, Experience, and Education. Do NOT place dividers between individual job entries within Experience.
 - Keep formatting minimal, crisp, and readable. No numbered lists unless specifically asked.
 
