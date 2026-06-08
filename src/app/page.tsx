@@ -23,6 +23,11 @@ export default function Home() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const animationRef = useRef<Animation | null>(null);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setVideoLoaded(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const carouselRef = useCallback((el: HTMLDivElement | null) => {
     if (animationRef.current) {
       animationRef.current.cancel();
@@ -65,7 +70,9 @@ export default function Home() {
                     loop
                     muted
                     playsInline
+                    preload="auto"
                     onLoadedData={() => setVideoLoaded(true)}
+                    onCanPlay={() => setVideoLoaded(true)}
                     className={`w-[240%] h-[240%] object-cover object-[center_20%] -translate-x-[3px] -translate-y-[calc(16%+7px)] transition-opacity duration-500 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
                   />
                 </div>
