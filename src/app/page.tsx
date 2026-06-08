@@ -125,10 +125,10 @@ export default function Home() {
                 <div ref={carouselRef} className="flex carousel-track">
                   {Array.from({ length: 2 }).flatMap((_, dupeIdx) =>
                     [
-                      "/Source Page - Dark Mode.png",
-                      "/Audience Tab - Dark.png",
-                      "/No Vote Design.png",
-                      "/Opinary Thumbnail.png",
+                      "/source-page.jpg",
+                      "/audience-tab.jpg",
+                      "/no-vote-design.jpg",
+                      "/opinary-thumbnail.jpg",
                     ].map((src, i) => (
                       <div
                         key={`${dupeIdx}-${i}`}
