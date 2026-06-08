@@ -34,7 +34,7 @@ export default function Home() {
         { transform: "translateX(0)" },
         { transform: "translateX(-50%)" },
       ],
-      { duration: 14000, iterations: Infinity, easing: "linear" }
+      { duration: 10500, iterations: Infinity, easing: "linear" }
     );
     animationRef.current = anim;
   }, []);
