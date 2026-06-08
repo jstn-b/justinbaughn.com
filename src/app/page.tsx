@@ -5,6 +5,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChatBar } from "@/components/chat-bar";
 import { ChatView } from "@/components/chat-view";
 
+const CAROUSEL_IMAGES = [
+  "/source-page.jpg",
+  "/audience-tab.jpg",
+  "/no-vote-design.jpg",
+  "/opinary-thumbnail.jpg",
+] as const;
+
+// Start fetching ~1.8 viewports before the carousel enters the screen.
+const CAROUSEL_PRELOAD_MARGIN = "0px 0px 180vh 0px";
+
 export default function Home() {
   const [chatActive, setChatActive] = useState(false);
   const [initialMessage, setInitialMessage] = useState<string | undefined>();
@@ -20,12 +30,32 @@ export default function Home() {
   }, []);
 
   const headshotRef = useRef<HTMLVideoElement>(null);
+  const carouselSectionRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [carouselImagesReady, setCarouselImagesReady] = useState(false);
   const animationRef = useRef<Animation | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setVideoLoaded(true), 3000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const el = carouselSectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCarouselImagesReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: CAROUSEL_PRELOAD_MARGIN },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   const carouselRef = useCallback((el: HTMLDivElement | null) => {
@@ -117,6 +147,7 @@ export default function Home() {
             </div>
 
             <motion.div
+              ref={carouselSectionRef}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 2.2, ease: "easeIn" }}
@@ -131,17 +162,21 @@ export default function Home() {
               >
                 <div ref={carouselRef} className="flex w-max carousel-track">
                   {Array.from({ length: 2 }).flatMap((_, dupeIdx) =>
-                    [
-                      "/source-page.jpg",
-                      "/audience-tab.jpg",
-                      "/no-vote-design.jpg",
-                      "/opinary-thumbnail.jpg",
-                    ].map((src, i) => (
+                    CAROUSEL_IMAGES.map((src, i) => (
                       <div
                         key={`${dupeIdx}-${i}`}
-                        className="shrink-0 w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] rounded-2xl bg-foreground/[0.06] overflow-hidden mr-6"
+                        className="shrink-0 w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] rounded-2xl bg-foreground/[0.06] overflow-hidden mr-6"
                       >
-                        {src && <img src={src} alt="" className="w-full h-full object-cover" />}
+                        {carouselImagesReady && (
+                          <img
+                            src={src}
+                            alt=""
+                            width={1280}
+                            height={1280}
+                            decoding="async"
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                     ))
                   )}
