@@ -13,7 +13,9 @@ const CAROUSEL_IMAGES = [
 ] as const;
 
 // Start fetching ~1.8 viewports before the carousel enters the screen.
-const CAROUSEL_PRELOAD_MARGIN = "0px 0px 180vh 0px";
+// rootMargin only accepts px or %; % is relative to the root (viewport) height,
+// so 180% ≈ 1.8 viewport heights. (vh units throw a SyntaxError.)
+const CAROUSEL_PRELOAD_MARGIN = "0px 0px 180% 0px";
 
 export default function Home() {
   const [chatActive, setChatActive] = useState(false);
